@@ -8,8 +8,8 @@ public class avaliacaoWhile {
 		Scanner sc = new Scanner(System.in);
 
 		String nome;
-		int horasTrabalhadas, opcao;
-		double valorPorHora;
+		int horasTrabalhadas, opcao, horasTotais = 0;
+		double valorPorHora, custoTotal = 0;
 		char resposta;
 		
 		//Leitura dos dados
@@ -34,7 +34,8 @@ public class avaliacaoWhile {
 		System.out.print("Digitar outro (S/N) ");
 		resposta = sc.next().charAt(0);
 		
-		
+		horasTotais = horasTotais + horasTrabalhadas;
+		custoTotal = custoTotal + horasTrabalhadas * valorPorHora;
 		}
 		while (resposta == 's' || resposta == 'S');
 		
@@ -47,10 +48,19 @@ public class avaliacaoWhile {
 		System.out.println("2 - Custo total");
 		System.out.println("3 - Nome da pessoa que ganhou mais");
 		System.out.println("4 - Sair ");
-		System.out.println("Digite uma opção: ");
+		System.out.print("Digite uma opção: ");
 		opcao = sc.nextInt();
+		System.out.println();
+		if (opcao == 1) {
+			System.out.println("Total de horas = " + horasTotais);
+		}
+		if (opcao == 2) {
+			System.out.printf("Custo total = R$ %.2f%n", custoTotal);
+		}
 		}
 		while( opcao != 4);
+		
+
 		
 		
 		sc.close();
