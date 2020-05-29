@@ -7,9 +7,9 @@ public class avaliacaoWhile {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 
-		String nome;
+		String nome, vencedor = null;
 		int horasTrabalhadas, opcao, horasTotais = 0;
-		double valorPorHora, custoTotal = 0;
+		double valorPorHora, custoTotal = 0, salario = 0, maiorSalario = 0;
 		char resposta;
 		
 		//Leitura dos dados
@@ -30,12 +30,20 @@ public class avaliacaoWhile {
 			System.out.print("Valor por hora: ");
 			valorPorHora = sc.nextInt();
 			}
-		
+		salario = salario + horasTrabalhadas * valorPorHora;
 		System.out.print("Digitar outro (S/N) ");
 		resposta = sc.next().charAt(0);
 		
 		horasTotais = horasTotais + horasTrabalhadas;
 		custoTotal = custoTotal + horasTrabalhadas * valorPorHora;
+		
+		if (salario > maiorSalario) {
+			maiorSalario = salario;
+			vencedor = nome;
+			
+		}
+		
+		
 		}
 		while (resposta == 's' || resposta == 'S');
 		
@@ -54,8 +62,14 @@ public class avaliacaoWhile {
 		if (opcao == 1) {
 			System.out.println("Total de horas = " + horasTotais);
 		}
-		if (opcao == 2) {
+		else if (opcao == 2) {
 			System.out.printf("Custo total = R$ %.2f%n", custoTotal);
+		}
+		else if (opcao == 3) {
+			System.out.println("Pessoa que ganhou mais = " + vencedor);
+		}
+		else if (opcao == 4) {
+			System.out.print("Fim do programa!");
 		}
 		}
 		while( opcao != 4);
